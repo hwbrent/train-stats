@@ -1,0 +1,3 @@
+[submodule "src/py/chromedriver_utils"]
+	path = src/py/chromedriver_utils
+	url = https://github.com/hwbrent/chromedriver_utils/
