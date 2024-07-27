@@ -20,6 +20,10 @@ def login():
     # Navigate to login page
     driver.get(LOGIN_PAGE_URL)
 
+    # Get rid of the cookies dialog
+    accept_cookies_button = driver.find_element(By.ID, "onetrust-accept-btn-handler")
+    accept_cookies_button.click()
+
     # Find email field and fill it in
     email_input = driver.find_element(By.ID, "signin-email")
     email_input.send_keys()
