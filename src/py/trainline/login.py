@@ -1,6 +1,8 @@
 import os
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from chromedriver_utils.init import init
 
@@ -20,12 +22,14 @@ def login():
     # Navigate to login page
     driver.get(LOGIN_PAGE_URL)
 
+    wait = WebDriverWait(driver, 10)  # seconds
+
     # Get rid of the cookies dialog
     accept_cookies_button = driver.find_element(By.ID, "onetrust-accept-btn-handler")
     accept_cookies_button.click()
 
     # Find email field and fill it in
-    email_input = driver.find_element(By.ID, "signin-email")
+    email_input = wait.until(EC.element_to_be_clickable((By.ID, "signin-email")))
     email_input.send_keys()
 
     # Find password field and fill it in
